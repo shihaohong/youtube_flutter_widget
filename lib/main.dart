@@ -32,7 +32,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),
-        itemExtent: 20.0,
         itemBuilder: (BuildContext context, int index) {
           return YoutubeListItem(title: 'Hello World');
         },
@@ -58,6 +57,43 @@ class YoutubeListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title);
+    return Padding(
+      padding: EdgeInsets.all(10.0),
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                decoration: const BoxDecoration(color: Colors.red),
+              ),
+              flex: 2,
+            ),
+            Expanded(
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                      child: Container(
+                        height: 44.0,
+                        decoration: BoxDecoration(color: Colors.blue),
+                      ),
+                      flex: 1),
+                  Expanded(
+                      child: Container(
+                        height: 44.0,
+                        decoration: BoxDecoration(color: Colors.yellow),
+                      ),
+                      flex: 1),
+                ],
+              ),
+              flex: 3,
+            ),
+            Icon(
+              Icons.more_vert,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
