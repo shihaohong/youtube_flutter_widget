@@ -32,8 +32,15 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),
+        itemExtent: 106.0,
         itemBuilder: (BuildContext context, int index) {
-          return YoutubeListItem(title: 'Hello World');
+          return YoutubeListItem(
+            imageUrl: 'http://i3.ytimg.com/vi/sPW7nDBqt8w/hqdefault.jpg',
+            user: 'Flutter',
+            numViews: 999000,
+            title: 'The Flutter YouTube Channel is Here!',
+            duration: '1:16',
+          );
         },
       ),
     );
@@ -42,54 +49,100 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class YoutubeListItem extends StatelessWidget {
   YoutubeListItem({
-    this.image,
+    this.imageUrl,
     this.user,
-    this.views,
+    this.numViews,
     this.title,
     this.duration,
   });
 
-  String image;
-  String user;
-  int views;
-  String title;
-  Duration duration;
+  final String imageUrl;
+  final String user;
+  final int numViews;
+  final String title;
+  final String duration;
+
+  Widget _buildThumbnail() {
+    return Expanded(
+      child: Stack(
+        children: <Widget>[
+          Image.network(imageUrl),
+          Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: EdgeInsets.all(4.0),
+                child: Container(
+                  decoration: BoxDecoration(color: Colors.black),
+                  child: Padding(
+                    padding: const EdgeInsets.all(1.0),
+                    child: Text(
+                      duration,
+                      style: TextStyle(
+                        fontSize: 10.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              )),
+        ],
+      ),
+      flex: 2,
+    );
+  }
+
+  Widget _buildVideoDescription() {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(5.0, 0.0, 0.0, 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              title,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 14.0,
+              ),
+            ),
+            Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
+            Text(
+              user,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontSize: 10.0,
+              ),
+            ),
+            Padding(padding: EdgeInsets.symmetric(vertical: 1.0)),
+            Text(
+              '$numViews views',
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontSize: 10.0,
+              ),
+            ),
+          ],
+        ),
+      ),
+      flex: 3,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.symmetric(vertical: 5.0),
       child: IntrinsicHeight(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Expanded(
-              child: Container(
-                decoration: const BoxDecoration(color: Colors.red),
-              ),
-              flex: 2,
-            ),
-            Expanded(
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                      child: Container(
-                        height: 44.0,
-                        decoration: BoxDecoration(color: Colors.blue),
-                      ),
-                      flex: 1),
-                  Expanded(
-                      child: Container(
-                        height: 44.0,
-                        decoration: BoxDecoration(color: Colors.yellow),
-                      ),
-                      flex: 1),
-                ],
-              ),
-              flex: 3,
-            ),
-            Icon(
-              Icons.more_vert,
+            _buildThumbnail(),
+            _buildVideoDescription(),
+            InkWell(
+              borderRadius: BorderRadius.circular(8.0),
+              onLongPress: () {},
+              child: Icon(Icons.more_vert, size: 16.0),
             ),
           ],
         ),
