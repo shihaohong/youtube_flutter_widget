@@ -80,29 +80,24 @@ class YoutubeListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5.0),
-      child: IntrinsicHeight(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Expanded(
-              child: _Thumbnail(imageUrl: imageUrl),
-              flex: 2,
-            ),
-            Expanded(
-              child: _VideoDescription(
-                title: title,
-                user: user,
-                viewCount: viewCount
-              ),
-              flex: 3,
-            ),
-            InkWell(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Icon(Icons.more_vert, size: 16.0),
-              onLongPress: () {},
-            ),
-          ],
-        ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: _Thumbnail(imageUrl: imageUrl),
+            flex: 2,
+          ),
+          Expanded(
+            child: _VideoDescription(
+                title: title, user: user, viewCount: viewCount),
+            flex: 3,
+          ),
+          InkWell(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Icon(Icons.more_vert, size: 16.0),
+            onLongPress: () {},
+          ),
+        ],
       ),
     );
   }
