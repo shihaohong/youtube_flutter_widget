@@ -39,7 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
             user: 'Flutter',
             numViews: 999000,
             title: 'The Flutter YouTube Channel is Here!',
-            duration: '1:16',
           );
         },
       ),
@@ -47,49 +46,36 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+class _Thumbnail extends StatelessWidget {
+  _Thumbnail({
+    Key key,
+    this.imageUrl,
+  }) : super(key: key);
+
+  final String imageUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Image.network(imageUrl),
+      flex: 2,
+    );
+  }
+}
+
+
 class YoutubeListItem extends StatelessWidget {
   YoutubeListItem({
     this.imageUrl,
     this.user,
     this.numViews,
     this.title,
-    this.duration,
   });
 
   final String imageUrl;
   final String user;
   final int numViews;
   final String title;
-  final String duration;
-
-  Widget _buildThumbnail() {
-    return Expanded(
-      child: Stack(
-        children: <Widget>[
-          Image.network(imageUrl),
-          Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: EdgeInsets.all(4.0),
-                child: Container(
-                  decoration: BoxDecoration(color: Colors.black),
-                  child: Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: Text(
-                      duration,
-                      style: TextStyle(
-                        fontSize: 10.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              )),
-        ],
-      ),
-      flex: 2,
-    );
-  }
 
   Widget _buildVideoDescription() {
     return Expanded(
@@ -137,7 +123,7 @@ class YoutubeListItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _buildThumbnail(),
+            _Thumbnail(imageUrl: imageUrl),
             _buildVideoDescription(),
             InkWell(
               borderRadius: BorderRadius.circular(8.0),
