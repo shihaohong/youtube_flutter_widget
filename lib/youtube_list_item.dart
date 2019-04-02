@@ -36,8 +36,8 @@ class _VideoDescription extends StatelessWidget {
   }
 }
 
-class YoutubeListItem extends StatelessWidget {
-  YoutubeListItem({
+class YouTubeListItem extends StatelessWidget {
+  YouTubeListItem({
     this.imageUrl,
     this.user,
     this.viewCount,

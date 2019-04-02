@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.all(8.0),
         itemExtent: 106.0,
         itemBuilder: (BuildContext context, int index) {
-          return YoutubeListItem(
+          return YouTubeListItem(
             imageUrl: 'http://i3.ytimg.com/vi/sPW7nDBqt8w/hqdefault.jpg',
             user: 'Flutter',
             viewCount: 999000,
