@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 
-class _Thumbnail extends StatelessWidget {
-  _Thumbnail({
-    Key key,
-    this.imageUrl,
-  }) : super(key: key);
-
-  final String imageUrl;
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.network(imageUrl);
-  }
-}
-
 class _VideoDescription extends StatelessWidget {
   _VideoDescription({
     Key key,
@@ -84,7 +70,7 @@ class YoutubeListItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Expanded(
-            child: _Thumbnail(imageUrl: imageUrl),
+            child: Image.network(imageUrl),
             flex: 2,
           ),
           Expanded(
