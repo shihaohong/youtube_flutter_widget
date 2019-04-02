@@ -78,11 +78,7 @@ class YoutubeListItem extends StatelessWidget {
                 title: title, user: user, viewCount: viewCount),
             flex: 3,
           ),
-          InkWell(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Icon(Icons.more_vert, size: 16.0),
-            onLongPress: () {},
-          ),
+          Icon(Icons.more_vert, size: 16.0),
         ],
       ),
     );
