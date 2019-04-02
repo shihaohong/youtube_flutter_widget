@@ -1,6 +1,6 @@
 # youtube_list_item
 
-A new Flutter project.
+A Flutter project to demonstrate how to create List items.
 
 ## Getting Started
 
