@@ -56,10 +56,7 @@ class YoutubeListItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Expanded(
-            child: Image.network(imageUrl),
-            flex: 2,
-          ),
+          Expanded(child: Image.network(imageUrl), flex: 2),
           Expanded(
             child: _VideoDescription(
               title: title, user: user, viewCount: viewCount,
