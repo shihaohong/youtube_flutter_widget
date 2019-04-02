@@ -75,7 +75,8 @@ class YoutubeListItem extends StatelessWidget {
           ),
           Expanded(
             child: _VideoDescription(
-                title: title, user: user, viewCount: viewCount),
+              title: title, user: user, viewCount: viewCount,
+            ),
             flex: 3,
           ),
           Icon(Icons.more_vert, size: 16.0),
