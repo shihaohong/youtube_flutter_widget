@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return YoutubeListItem(
             imageUrl: 'http://i3.ytimg.com/vi/sPW7nDBqt8w/hqdefault.jpg',
             user: 'Flutter',
-            numViews: 999000,
+            viewCount: 999000,
             title: 'The Flutter YouTube Channel is Here!',
           );
         },
@@ -63,21 +63,20 @@ class _Thumbnail extends StatelessWidget {
   }
 }
 
-
-class YoutubeListItem extends StatelessWidget {
-  YoutubeListItem({
-    this.imageUrl,
-    this.user,
-    this.numViews,
+class _VideoDescription extends StatelessWidget {
+  _VideoDescription({
+    Key key,
     this.title,
-  });
+    this.user,
+    this.viewCount,
+  }) : super(key: key);
 
-  final String imageUrl;
-  final String user;
-  final int numViews;
   final String title;
+  final String user;
+  final int viewCount;
 
-  Widget _buildVideoDescription() {
+  @override
+  Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(5.0, 0.0, 0.0, 0.0),
@@ -102,7 +101,7 @@ class YoutubeListItem extends StatelessWidget {
             ),
             Padding(padding: EdgeInsets.symmetric(vertical: 1.0)),
             Text(
-              '$numViews views',
+              '$viewCount views',
               textAlign: TextAlign.start,
               style: TextStyle(
                 fontSize: 10.0,
@@ -114,6 +113,20 @@ class YoutubeListItem extends StatelessWidget {
       flex: 3,
     );
   }
+}
+
+class YoutubeListItem extends StatelessWidget {
+  YoutubeListItem({
+    this.imageUrl,
+    this.user,
+    this.viewCount,
+    this.title,
+  });
+
+  final String imageUrl;
+  final String user;
+  final int viewCount;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -124,11 +137,11 @@ class YoutubeListItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _Thumbnail(imageUrl: imageUrl),
-            _buildVideoDescription(),
+            _VideoDescription(title: title, user: user, viewCount: viewCount),
             InkWell(
               borderRadius: BorderRadius.circular(8.0),
-              onLongPress: () {},
               child: Icon(Icons.more_vert, size: 16.0),
+              onLongPress: () {},
             ),
           ],
         ),
