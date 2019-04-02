@@ -19,29 +19,16 @@ class _VideoDescription extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            title,
-            textAlign: TextAlign.start,
+          Text(title,
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 14.0,
             ),
           ),
           Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
-          Text(
-            user,
-            textAlign: TextAlign.start,
-            style: TextStyle(
-              fontSize: 10.0,
-            ),
-          ),
+          Text(user, style: TextStyle(fontSize: 10.0)),
           Padding(padding: EdgeInsets.symmetric(vertical: 1.0)),
-          Text(
-            '$viewCount views',
-            textAlign: TextAlign.start,
-            style: TextStyle(
-              fontSize: 10.0,
-            ),
+          Text('$viewCount views', style: TextStyle(fontSize: 10.0),
           ),
         ],
       ),
