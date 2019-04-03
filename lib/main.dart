@@ -31,16 +31,23 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView.builder(
+      body: ListView(
         padding: EdgeInsets.all(8.0),
         itemExtent: 106.0,
-        itemBuilder: (BuildContext context, int index) {
-          return YouTubeListItem(
+        children: [
+          YouTubeListItem(
+            image: 'assets/custom_tile_item_thumbnail_one.jpg',
             user: 'Flutter',
             viewCount: 999000,
-            title: 'The Flutter YouTube Channel is Here!',
-          );
-        },
+            title: 'The Flutter YouTube Channel',
+          ),
+          YouTubeListItem(
+            image: 'assets/custom_tile_item_thumbnail_two.jpg',
+            user: 'Dash',
+            viewCount: 884000,
+            title: 'Announcing Flutter 1.0',
+          ),
+        ],
       ),
     );
   }

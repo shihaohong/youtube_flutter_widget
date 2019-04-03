@@ -38,13 +38,13 @@ class _VideoDescription extends StatelessWidget {
 
 class YouTubeListItem extends StatelessWidget {
   YouTubeListItem({
-    this.imageUrl,
+    this.image,
     this.user,
     this.viewCount,
     this.title,
   });
 
-  final String imageUrl;
+  final String image;
   final String user;
   final int viewCount;
   final String title;
@@ -56,7 +56,7 @@ class YouTubeListItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Expanded(child: FlutterLogo(size: 96), flex: 2),
+          Expanded(child: Image.asset(image), flex: 2),
           Expanded(
             child: _VideoDescription(
               title: title, user: user, viewCount: viewCount,
